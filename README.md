@@ -303,28 +303,11 @@ gradient_accumulation_steps = 8  # compensar batch menor
 
 Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
 
-## 👥 Autores
-
-- Seu Nome - [GitHub](https://github.com/seu-usuario)
-
-## 🙏 Agradecimentos
-
-- [Hugging Face](https://huggingface.co/) pela biblioteca Transformers
-- [BERT](https://arxiv.org/abs/1810.04805) - Devlin et al., 2018
-- Comunidade open source
-
 ## 📚 Referências
 
 - [BERT: Pre-training of Deep Bidirectional Transformers](https://arxiv.org/abs/1810.04805)
 - [Hugging Face Transformers Documentation](https://huggingface.co/docs/transformers/)
 - [Fine-tuning Best Practices](https://huggingface.co/docs/transformers/training)
-
-## 📞 Suporte
-
-Para questões e suporte:
-
-- Abra uma [issue](https://github.com/seu-usuario/seu-repo/issues)
-- Email: seu-email@example.com
 
 ---
 
