@@ -16,9 +16,23 @@
 
 ## Visão Geral
 
-### Objetivo
+### Contexto do Negócio
 
-Desenvolver um classificador de texto binário capaz de distinguir entre mensagens de **suporte** e **vendas** com alta precisão e baixa latência.
+Este projeto foi desenvolvido como solução para uma grande rede varejista especializada em produtos domésticos que busca melhorar a eficiência do atendimento ao cliente através da automatização. O desafio consiste em implementar um sistema inteligente capaz de classificar automaticamente as mensagens recebidas pelo Bot de Atendimento, direcionando clientes para os canais apropriados (equipe de vendas ou suporte técnico).
+
+**Problema de Negócio:**
+
+- Volume elevado de mensagens no atendimento digital
+- Necessidade de resposta rápida e direcionamento preciso
+- Otimização de recursos humanos (vendedores vs técnicos)
+- Melhoria na experiência do cliente através de atendimento especializado
+
+**Solução Proposta:**
+Fine-tuning de um Small Language Model (BERT) para classificação binária de intenção, permitindo roteamento automático e inteligente de mensagens.
+
+### Objetivo Técnico
+
+Desenvolver um classificador de texto binário capaz de distinguir entre mensagens de **suporte** e **vendas** com alta precisão e baixa latência, integrável ao Bot de Atendimento existente.
 
 ### Tecnologias Utilizadas
 
@@ -109,6 +123,13 @@ dataset = load_dataset(
 ```json
 { "prompt": "texto do usuário", "completion": "suporte|venda" }
 ```
+
+**Características do Dataset:**
+
+- **Origem**: Dados sintéticos gerados para fins didáticos
+- **Domínio**: Varejo de produtos domésticos (eletrodomésticos, utensílios)
+- **Distribuição**: Mensagens simulando interações reais com Bot de Atendimento
+- **Qualidade**: Dados limpos e pré-validados, prontos para treinamento
 
 ### 2. Pré-processamento
 
@@ -315,12 +336,18 @@ def compute_extended_metrics(predictions, labels):
 
 ### Interpretação dos Resultados
 
-| Métrica   | Bom  | Excelente | Observações                    |
-| --------- | ---- | --------- | ------------------------------ |
-| Accuracy  | >80% | >90%      | Métrica principal              |
-| Precision | >85% | >95%      | Poucos falsos positivos        |
-| Recall    | >85% | >95%      | Poucos falsos negativos        |
-| F1-Score  | >85% | >95%      | Balanço entre precision/recall |
+| Métrica   | Bom  | Excelente | Observações                                         |
+| --------- | ---- | --------- | --------------------------------------------------- |
+| Accuracy  | >80% | >90%      | Métrica principal para roteamento                   |
+| Precision | >85% | >95%      | Crítico para vendas (evitar perder oportunidades)   |
+| Recall    | >85% | >95%      | Crítico para suporte (não deixar cliente sem ajuda) |
+| F1-Score  | >85% | >95%      | Balanço ideal para operação em varejo               |
+
+**Impacto no Negócio:**
+
+- **Alta Precision em Vendas**: Reduz perda de oportunidades comerciais
+- **Alto Recall em Suporte**: Garante que problemas sejam atendidos
+- **Accuracy Geral**: Determina eficiência operacional e satisfação do cliente
 
 ---
 

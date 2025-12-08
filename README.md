@@ -6,14 +6,17 @@
 
 ## 📋 Descrição
 
-Modelo de classificação de texto baseado em BERT para categorizar automaticamente mensagens de clientes entre **Suporte** e **Vendas**. Útil para sistemas de triagem automática, chatbots e análise de tickets.
+Modelo de classificação de texto baseado em BERT desenvolvido para automatizar o atendimento ao cliente de uma grande rede varejista de produtos domésticos. O sistema categoriza automaticamente mensagens enviadas ao Bot de Atendimento em duas categorias: **Suporte** (dúvidas e problemas) e **Vendas** (intenção de compra).
+
+Este projeto demonstra a aplicação prática de fine-tuning em Small Language Models (SLM) para melhorar a eficiência operacional em ambientes de varejo, reduzindo tempo de resposta e direcionando clientes para os canais apropriados.
 
 ### 🎯 Casos de Uso
 
-- Roteamento automático de tickets de atendimento
-- Classificação de e-mails corporativos
-- Triagem de mensagens em chatbots
-- Análise de intenção do cliente
+- **Varejo**: Roteamento inteligente de mensagens em e-commerce
+- **Atendimento**: Triagem automática de tickets para equipes especializadas
+- **Chatbots**: Classificação de intenção para respostas contextualizadas
+- **E-mail**: Priorização automática de mensagens comerciais vs suporte
+- **Analytics**: Análise de padrões de comportamento do cliente
 
 ## 🏗️ Arquitetura
 
@@ -77,29 +80,34 @@ huggingface-cli login
 
 ## 📊 Dataset
 
+### Origem dos Dados
+
+⚠️ **Nota Importante**: O dataset utilizado foi gerado de forma **sintética** exclusivamente para fins didáticos e de desenvolvimento. Os dados não representam interações reais de clientes, mas simulam cenários típicos de atendimento em redes varejistas de produtos domésticos.
+
 ### Formato dos Dados
 
-Os dados devem estar no formato JSONL com a seguinte estrutura:
+Os dados estão no formato JSONL com a seguinte estrutura:
 
 ```json
 {"prompt": "Como faço para configurar o fogão elétrico?", "completion": "suporte"}
 {"prompt": "Quero comprar um micro-ondas, vocês têm sugestões?", "completion": "venda"}
 ```
 
+Cada registro representa uma mensagem de cliente ao Bot de Atendimento com sua respectiva classificação.
+
 ### Estrutura de Arquivos
 
 ```
 ├── train.jsonl          # Dados de treinamento
 ├── test.jsonl           # Dados de validação
-└── data/                # (Opcional) Dados adicionais
 ```
 
 ### Classes
 
-| Classe  | Label | Descrição                             |
-| ------- | ----- | ------------------------------------- |
-| suporte | 0     | Questões técnicas, problemas, ajuda   |
-| venda   | 1     | Interesse em compra, preços, produtos |
+| Classe  | Label | Descrição                                                                                                      |
+| ------- | ----- | -------------------------------------------------------------------------------------------------------------- |
+| suporte | 0     | Dúvidas sobre funcionamento, configuração, problemas técnicos, garantias e assistência com produtos domésticos |
+| venda   | 1     | Intenção de compra, consulta de preços, disponibilidade, condições de pagamento e informações sobre produtos   |
 
 ## 🛠️ Treinamento
 
@@ -206,7 +214,6 @@ fine_tunning/models/
 │   └── checkpoint-*/           # Checkpoints intermediários
 │
 ├── logs/                       # Logs de treinamento
-└── data/                       # Dados adicionais
 ```
 
 ## 🔧 Configuração Avançada
